@@ -17,7 +17,6 @@ export const getAll = async () => {
 export const create = async article => {
   const newArticle = {
     ...article,
-    id: new Date().getTime(),
     updatedAt: new Date().toISOString(),
     views: 0
   };

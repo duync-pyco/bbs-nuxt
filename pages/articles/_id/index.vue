@@ -1,17 +1,14 @@
 <template>
   <div id="container">
-    <div v-if="!!article">
-      <ArticleItem
-        id="article-item"
-        v-bind="article"
-      />
-      <hr />
-      <div id="footer">
-        <Button @click="handleEditClick">Edit</Button>
-        <Button @click="handleDeleteClick">Delete</Button>
-      </div>
+    <ArticleItem
+      id="article-item"
+      v-bind="article"
+    />
+    <hr />
+    <div id="footer">
+      <Button @click="handleEditClick">Edit</Button>
+      <Button @click="handleDeleteClick">Delete</Button>
     </div>
-    <h3 v-else>Item not found</h3>
   </div>
 </template>
 

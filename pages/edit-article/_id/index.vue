@@ -1,12 +1,9 @@
 <template>
-  <div>
-    <ArticleForm
-      v-if="!!article"
-      :initArticle="article"
-      @submit="handleSubmit"
-    />
-    <h3 v-else>Item not found</h3>
-  </div>
+  <ArticleForm
+    v-if="!!article"
+    :initArticle="article"
+    @submit="handleSubmit"
+  />
 </template>
 
 <script>
@@ -17,7 +14,7 @@ import ArticleForm from '~/components/article-form';
 
 export default {
   components: { ArticleForm },
-  async asyncData({ store, params }) {
+  async asyncData({ store, params, error }) {
     const article = await store.dispatch(ACTIONS.GET_BY_ID, {
       id: params.id,
       nuxtError: error

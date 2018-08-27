@@ -1,5 +1,5 @@
-import ArticleApi from '../../../services/api/articles/';
-import handleAction from '../../../helpers/handle-actions/';
+import ArticleApi from '~/services/api/articles/';
+import handleAction from '~/helpers/handle-actions/';
 import { ACTIONS, MUTATIONS } from './constants';
 
 const nuxtServerInit = context => {
@@ -13,6 +13,13 @@ const getAll = async context =>
     return articles;
   });
 
+const addNewArticle = async (context, { article }) =>
+  handleAction(context, async () => {
+    const newArticle = await ArticleApi.create(article);
+    context.commit(MUTATIONS.ADD, { article: newArticle });
+    return newArticle;
+  });
+
 // const getArticleById = async (context, { id }) =>
 //   handleAction(context, async () => {
 //     try {
@@ -23,12 +30,6 @@ const getAll = async context =>
 //       context.commit(MUTATIONS.UPDATE_CURRENT, { article: null });
 //       return null;
 //     }
-//   });
-
-// const addNewArticle = async (context, { article }) =>
-//   handleAction(context, async () => {
-//     const newArticle = await ArticleApi.create(article);
-//     return newArticle;
 //   });
 
 // const updateArticle = async (context, { article }) =>
@@ -45,8 +46,8 @@ const getAll = async context =>
 
 export default {
   nuxtServerInit,
-  [ACTIONS.GET_ALL]: getAll
-  // [ACTIONS.ADD]: addNewArticle,
+  [ACTIONS.GET_ALL]: getAll,
+  [ACTIONS.ADD]: addNewArticle
   // [ACTIONS.UPDATE]: updateArticle,
   // [ACTIONS.GET_BY_ID]: getArticleById,
   // [ACTIONS.REMOVE]: removeArticle

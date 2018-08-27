@@ -1,7 +1,7 @@
 import {
   MUTATIONS as APP_MUTATIONS,
   ACTIONS as APP_ACTIONS
-} from '../../store/modules/app/constants';
+} from '~/store/modules/app/constants';
 
 const handleAction = async ({ dispatch, commit }, fn) => {
   try {

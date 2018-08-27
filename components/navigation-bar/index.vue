@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Button from '@/elements/button';
+import Button from '~/elements/button';
 
 export default {
   components: { Button },

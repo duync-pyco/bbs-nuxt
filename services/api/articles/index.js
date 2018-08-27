@@ -4,13 +4,10 @@ const baseUrl = process.env.baseUrl;
 const generateUrl = path => `${baseUrl}/articles${path}.json`;
 
 export const getAll = async () => {
-  const res = await Axios.get(generateUrl(''));
-  return res.data;
-};
+  const { data } = await Axios.get(generateUrl(''));
 
-export const getById = async id => {
-  const res = await Axios.get(generateUrl(`/${id}`));
-  return res.data;
+  if (data) return Object.keys(data).map(key => data[key]);
+  else return [];
 };
 
 export const create = async article => {
@@ -21,7 +18,12 @@ export const create = async article => {
     views: 0
   };
 
-  const res = await Axios.post(fullPath, newArticle);
+  const res = await Axios.post(generateUrl(''), newArticle);
+  return res.data;
+};
+
+export const getById = async id => {
+  const res = await Axios.get(generateUrl(`/${id}`));
   return res.data;
 };
 

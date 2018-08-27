@@ -3,7 +3,7 @@
     <router-link to="/articles">
       <Button class="navigation-button">Article List</Button>
     </router-link>
-    <h1 id="title">{{ this.title }}</h1>
+    <h1 id="title">{{ this.capitalizedTitle }}</h1>
     <router-link to="/new-article">
       <Button class="navigation-button">New Article</Button>
     </router-link>
@@ -19,6 +19,11 @@ export default {
     title: {
       type: String,
       required: true
+    }
+  },
+  computed: {
+    capitalizedTitle() {
+      return this.title.toUpperCase();
     }
   }
 };

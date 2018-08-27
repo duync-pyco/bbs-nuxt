@@ -2,7 +2,9 @@
   <div>
     <NavigationBar :title="$router.currentRoute.name"/>
     <hr />
-    <nuxt />
+    <div id="app-container">
+      <nuxt />
+    </div>
   </div>
 </template>
 

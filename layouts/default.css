@@ -26,36 +26,3 @@ body {
   position: relative;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
-
-.slide-leave-active {
-  transition: opacity 0.2s ease;
-  opacity: 0;
-  animation: slide-out 0.2s ease-out forwards;
-}
-
-.slide-leave {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.slide-enter-active {
-  animation: slide-in 0.2s ease-out forwards;
-}
-
-@keyframes slide-out {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-30px);
-  }
-}
-
-@keyframes slide-in {
-  0% {
-    transform: translateY(-30px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}

@@ -17,5 +17,32 @@ export default {
 </script>
 
 <style>
-@import './default.css';
+body {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  font: 14px Helvetica;
+  line-height: 1.4em;
+  background: #f5f5f5;
+  color: #4d4d4d;
+  min-width: 240px;
+  max-width: 720px;
+  margin: auto;
+  font-weight: 300;
+}
+
+:focus {
+  outline: 0;
+}
+
+#app-container {
+  background: #fff;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
 </style>

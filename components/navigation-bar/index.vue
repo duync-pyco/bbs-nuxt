@@ -24,7 +24,7 @@ export default {
   components: { Button },
   computed: {
     mappedTitle() {
-      return titles[this.$route.name];
+      return titles[this.$route.name] || 'Error';
     }
   }
 };

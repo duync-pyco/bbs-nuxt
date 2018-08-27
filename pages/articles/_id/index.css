@@ -1,0 +1,13 @@
+#container {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+#article-item {
+  text-align: left;
+  padding-bottom: 10px;
+}
+#footer {
+  text-align: left;
+  padding-top: 9px;
+  margin-left: -3px;
+}

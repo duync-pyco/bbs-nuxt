@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     handleArticleClick(id) {
-      this.$router.push(`/article/${id}`);
+      this.$router.push(`/articles/${id}`);
     },
     syncQuery() {
       const { query } = this.$route;

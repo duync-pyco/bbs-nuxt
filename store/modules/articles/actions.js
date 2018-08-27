@@ -13,42 +13,41 @@ const getAll = async context =>
     return articles;
   });
 
-const addNewArticle = async (context, { article }) =>
+const getById = async (context, { id }) =>
+  handleAction(context, async () => {
+    try {
+      const article = await ArticleApi.getById(id);
+      return article;
+    } catch (error) {
+      return null;
+    }
+  });
+
+const add = async (context, { article }) =>
   handleAction(context, async () => {
     const newArticle = await ArticleApi.create(article);
     context.commit(MUTATIONS.ADD, { article: newArticle });
     return newArticle;
   });
 
-// const getArticleById = async (context, { id }) =>
-//   handleAction(context, async () => {
-//     try {
-//       const article = await ArticleApi.getById(id);
-//       context.commit(MUTATIONS.UPDATE_CURRENT, { article });
-//       return article;
-//     } catch (error) {
-//       context.commit(MUTATIONS.UPDATE_CURRENT, { article: null });
-//       return null;
-//     }
-//   });
+const update = async (context, { article }) =>
+  handleAction(context, async () => {
+    const updatedArticle = await ArticleApi.update(article);
+    context.commit(MUTATIONS.UPDATE, { article: updatedArticle });
+    return updatedArticle;
+  });
 
-// const updateArticle = async (context, { article }) =>
-//   handleAction(context, async () => {
-//     await ArticleApi.update(article);
-//     context.commit(MUTATIONS.UPDATE_CURRENT, { article });
-//   });
-
-// const removeArticle = async (context, { id }) =>
-//   handleAction(context, async () => {
-//     const deletedArticle = await ArticleApi.remove(id);
-//     return deletedArticle;
-//   });
+const remove = async (context, { id }) =>
+  handleAction(context, async () => {
+    await ArticleApi.remove(id);
+    context.commit(MUTATIONS.REMOVE, { id });
+  });
 
 export default {
   nuxtServerInit,
   [ACTIONS.GET_ALL]: getAll,
-  [ACTIONS.ADD]: addNewArticle
-  // [ACTIONS.UPDATE]: updateArticle,
-  // [ACTIONS.GET_BY_ID]: getArticleById,
-  // [ACTIONS.REMOVE]: removeArticle
+  [ACTIONS.ADD]: add,
+  [ACTIONS.GET_BY_ID]: getById,
+  [ACTIONS.UPDATE]: update,
+  [ACTIONS.REMOVE]: remove
 };

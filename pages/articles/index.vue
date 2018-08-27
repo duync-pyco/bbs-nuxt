@@ -35,7 +35,7 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import { GETTERS } from '~/store/modules/articles/constants';
+import { GETTERS, ACTIONS } from '~/store/modules/articles/constants';
 import ArticleItem from '~/components/article-item';
 import Button from '~/elements/button';
 
@@ -47,6 +47,9 @@ export default {
       pageSize: 2,
       pageIndex: 1
     };
+  },
+  fetch({ store, error }) {
+    return store.dispatch(ACTIONS.GET_ALL, { nuxtError: error });
   },
   computed: {
     start() {

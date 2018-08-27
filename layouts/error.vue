@@ -1,8 +1,8 @@
 <template>
-  <div class="error">
-    <h1 class="title">{{ message }}</h1>
-    <p class="description" v-if="statusCode === 404">
-      <nuxt-link class="error-link" to="/">Back to the home page</nuxt-link>
+  <div>
+    <h2>{{ message }}</h2>
+    <p v-if="statusCode === 404">
+      <nuxt-link to="/">Back to the home page</nuxt-link>
     </p>
   </div>
 </template>

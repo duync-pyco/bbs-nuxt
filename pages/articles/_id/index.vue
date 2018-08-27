@@ -24,13 +24,17 @@ import Button from '~/elements/button';
 
 export default {
   components: { ArticleItem, Button },
-  async asyncData({ store, params }) {
-    const article = await store.dispatch(ACTIONS.GET_BY_ID, { id: params.id });
+  async asyncData({ store, params, error }) {
+    const article = await store.dispatch(ACTIONS.GET_BY_ID, {
+      id: params.id,
+      nuxtError: error
+    });
 
     if (!article) return { article: null };
 
     const updatedArticle = await store.dispatch(ACTIONS.UPDATE, {
-      article: { ...article, views: article.views + 1 }
+      article: { ...article, views: article.views + 1 },
+      nuxtError: error
     });
     return { article: updatedArticle };
   },

@@ -30,6 +30,9 @@ export const create = async article => {
 
 export const getById = async id => {
   const res = await Axios.get(generateUrl(`/${id}`));
+
+  if (!res.data) return null;
+
   return {
     ...res.data,
     id

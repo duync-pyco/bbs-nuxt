@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavigationBar :title="$router.currentRoute.name"/>
+    <NavigationBar />
     <hr />
     <div id="app-container">
       <nuxt />

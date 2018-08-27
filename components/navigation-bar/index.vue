@@ -3,7 +3,7 @@
     <router-link to="/articles">
       <Button class="navigation-button">Article List</Button>
     </router-link>
-    <h1 id="title">{{ this.capitalizedTitle }}</h1>
+    <h1 id="title">{{ this.mappedTitle }}</h1>
     <router-link to="/new-article">
       <Button class="navigation-button">New Article</Button>
     </router-link>
@@ -13,17 +13,18 @@
 <script>
 import Button from '~/elements/button';
 
+const titles = {
+  articles: 'Articles',
+  'articles-id': 'Article Details',
+  'new-article': 'New Article',
+  'edit-article-id': 'Edit Article'
+};
+
 export default {
   components: { Button },
-  props: {
-    title: {
-      type: String,
-      required: true
-    }
-  },
   computed: {
-    capitalizedTitle() {
-      return this.title ? this.title.toUpperCase() : '';
+    mappedTitle() {
+      return titles[this.$route.name];
     }
   }
 };

@@ -21,5 +21,14 @@ module.exports = {
   build: {},
   env: {
     baseUrl: process.env.BASE_URL || 'https://bbs-nuxt.firebaseio.com'
+  },
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'root',
+        path: '/',
+        component: resolve(__dirname, 'pages/articles/index.vue')
+      });
+    }
   }
 };

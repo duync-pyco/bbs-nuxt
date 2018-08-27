@@ -26,6 +26,9 @@ export default {
   components: { ArticleItem, Button },
   async asyncData({ store, params }) {
     const article = await store.dispatch(ACTIONS.GET_BY_ID, { id: params.id });
+
+    if (!article) return { article: null };
+
     const updatedArticle = await store.dispatch(ACTIONS.UPDATE, {
       article: { ...article, views: article.views + 1 }
     });

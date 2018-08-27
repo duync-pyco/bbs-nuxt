@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Button from '@/elements/button/button';
+import Button from '@/elements/button';
 
 export default {
   components: { Button },
@@ -23,13 +23,13 @@ export default {
   },
   computed: {
     capitalizedTitle() {
-      return this.title.toUpperCase();
+      return this.title ? this.title.toUpperCase() : '';
     }
   }
 };
 </script>
 
 <style scoped>
-@import './navigation-bar.css';
+@import './index.css';
 </style>
 

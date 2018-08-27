@@ -16,7 +16,7 @@ export default {
 
 
 <style scoped>
-@import './button.css';
+@import './index.css';
 </style>
 
 

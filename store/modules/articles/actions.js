@@ -1,5 +1,5 @@
-import ArticleApi from '../../../services/api/articles';
-import handleAction from '../../../helpers/handle-actions/handle-actions';
+import ArticleApi from '../../../services/api/articles/';
+import handleAction from '../../../helpers/handle-actions/';
 import { ACTIONS, MUTATIONS } from './constants';
 
 const nuxtServerInit = context => {

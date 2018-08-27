@@ -36,8 +36,8 @@
 import { mapGetters } from 'vuex';
 
 import { GETTERS } from '../../store/modules/articles/constants';
-import ArticleItem from '@/components/article-item/article-item';
-import Button from '@/elements/button/button';
+import ArticleItem from '@/components/article-item';
+import Button from '@/elements/button';
 
 export default {
   components: { ArticleItem, Button },

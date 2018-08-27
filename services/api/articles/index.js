@@ -18,7 +18,7 @@ export const create = async article => {
   const newArticle = {
     ...article,
     id: new Date().getTime(),
-    updatedAt: new Date().toUTCString(),
+    updatedAt: new Date().toISOString(),
     views: 0
   };
 

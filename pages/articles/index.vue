@@ -61,7 +61,10 @@ export default {
     processedArticles() {
       const copyArticles = [...this.articles];
       return copyArticles
-        .sort((a, b) => b.id - a.id)
+        .sort(
+          (a, b) =>
+            new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+        )
         .slice(this.start, this.end);
     },
     ...mapGetters({

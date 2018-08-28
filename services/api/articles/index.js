@@ -1,6 +1,6 @@
 import Axios from 'axios';
 
-const baseUrl = process.env.baseUrl;
+const baseUrl = process.env.BASE_URL;
 const generateUrl = path => `${baseUrl}/articles${path}.json`;
 
 export const getAll = async () => {

@@ -19,9 +19,6 @@ module.exports = {
   ** Build configuration
   */
   build: {},
-  env: {
-    baseUrl: process.env.BASE_URL || 'https://bbs-nuxt.firebaseio.com'
-  },
   router: {
     extendRoutes(routes, resolve) {
       routes.push({
@@ -31,5 +28,6 @@ module.exports = {
       });
     }
   },
-  plugins: ['~/plugins/date-filter.js']
+  plugins: ['~plugins/date-filter.js'],
+  modules: [['@nuxtjs/dotenv', { filename: '.env' }]]
 };

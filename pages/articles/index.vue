@@ -48,8 +48,8 @@ export default {
       pageIndex: 1
     };
   },
-  fetch({ store, error }) {
-    return store.dispatch(ACTIONS.GET_ALL, { nuxtError: error });
+  fetch(nuxtContext) {
+    return nuxtContext.store.dispatch(ACTIONS.GET_ALL, { nuxtContext });
   },
   computed: {
     start() {

@@ -14,10 +14,11 @@ import ArticleForm from '~/components/article-form';
 
 export default {
   components: { ArticleForm },
-  async asyncData({ store, params, error }) {
+  async asyncData(nuxtContext) {
+    const { store, params } = nuxtContext;
     const article = await store.dispatch(ACTIONS.GET_BY_ID, {
       id: params.id,
-      nuxtError: error
+      nuxtContext
     });
     return { article };
   },

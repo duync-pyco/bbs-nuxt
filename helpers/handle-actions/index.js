@@ -5,15 +5,17 @@ export class BBSError {
   }
 }
 
-export const handleAction = async (nuxtError, fn) => {
+export const handleAction = async (nuxtContext, fn) => {
   try {
     const res = await fn();
     return res;
   } catch (error) {
     if (!(error instanceof BBSError)) {
-      nuxtError(new BBSError(500, 'Oops... Something went wrong!'));
+      nuxtContext.error(
+        new BBSError(500, 'Oops... Something went wrong! Please try again')
+      );
     } else {
-      nuxtError(error);
+      nuxtContext.error(error);
     }
   }
 };

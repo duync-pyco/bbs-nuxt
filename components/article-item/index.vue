@@ -2,7 +2,7 @@
   <div>
     <h2>{{ title }}</h2>
     <p>Posted by {{ author }} - {{ email }}</p>
-    <p>Updated at: {{ updatedAt }} - Views: {{ views }}</p>
+    <p>Updated at: {{ updatedAt | date }} - Views: {{ views }}</p>
     <p>{{ content }}</p>
   </div>
 </template>

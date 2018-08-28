@@ -30,5 +30,6 @@ module.exports = {
         component: resolve(__dirname, 'pages/articles/index.vue')
       });
     }
-  }
+  },
+  plugins: ['~/plugins/date-filter.js']
 };

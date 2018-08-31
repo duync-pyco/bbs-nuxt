@@ -53,6 +53,7 @@ body {
   justify-content: flex-start;
   margin-bottom: -1px;
   padding: 0px;
+  font-size: 20px;
 }
 
 .tabs-component-tab {
@@ -91,5 +92,55 @@ body {
   border: solid 1px #ddd;
   border-radius: 0 6px 6px 6px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+form {
+  text-align: left;
+}
+
+input,
+textarea {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 1.4em;
+  color: inherit;
+  padding: 6px;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border: none;
+  background: rgba(0, 0, 0, 0.003);
+  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+}
+
+textarea {
+  resize: none;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  font-weight: 300;
+  color: #e6e6e6;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  font-weight: 300;
+  color: #e6e6e6;
+}
+
+input::input-placeholder,
+textarea::input-placeholder {
+  font-weight: 300;
+  color: #e6e6e6;
+}
+
+#submit-button {
+  margin-top: 16px;
+  margin-left: 60px;
 }
 </style>

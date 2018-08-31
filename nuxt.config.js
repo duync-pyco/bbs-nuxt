@@ -29,7 +29,11 @@ module.exports = {
     }
   },
   plugins: ['~plugins/date-filter.js'],
-  modules: [['@nuxtjs/dotenv', { filename: '.env' }], '@nuxtjs/toast'],
+  modules: [
+    ['@nuxtjs/dotenv', { filename: '.env' }],
+    '@nuxtjs/toast',
+    'nuxt-validate'
+  ],
   toast: {
     position: 'top-center',
     duration: 3000

@@ -1,0 +1,14 @@
+input {
+  font-size: 20px !important;
+}
+
+.error-container {
+  margin-top: 10px;
+  margin-left: 5px;
+  color: red;
+}
+
+.button {
+  font-size: 16px !important;
+  margin-top: 30px !important;
+}

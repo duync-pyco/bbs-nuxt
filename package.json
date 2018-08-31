@@ -22,6 +22,7 @@
     "@nuxtjs/toast": "^3.0.1",
     "axios": "^0.18.0",
     "nuxt": "^1.0.0",
+    "nuxt-validate": "^0.1.1",
     "vue-tabs-component": "^1.4.0"
   },
   "devDependencies": {

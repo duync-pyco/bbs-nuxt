@@ -1,12 +1,10 @@
 <template>
   <transition name="modal">
     <div class="modal-mask">
-      <div class="modal-wrapper">
-        <div class="modal-container">
-          <slot>
-            Default Slot
-          </slot>
-        </div>
+      <div class="modal-container">
+        <slot>
+          Default Slot
+        </slot>
       </div>
     </div>
   </transition>

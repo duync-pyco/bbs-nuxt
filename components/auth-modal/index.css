@@ -4,6 +4,10 @@
   padding-top: 10px;
 }
 
+.form-container {
+  padding: 30px;
+}
+
 .title {
   display: flex;
 }

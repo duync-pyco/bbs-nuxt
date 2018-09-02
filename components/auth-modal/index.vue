@@ -29,12 +29,12 @@ export default {
   components: { Modal, Tabs, Tab, AuthForm },
   methods: {
     async handleLogin({ email, password }) {
-      await this.login({ email, password });
-      // this.$refs.loginForm.clearForm();
+      const isSuccessful = await this.login({ email, password });
+      if (isSuccessful) this.toggleModal(false);
     },
     async handleRegister({ email, password }) {
-      await this.register({ email, password });
-      // this.$refs.registerForm.clearForm();
+      const isSuccessful = await this.register({ email, password });
+      if (isSuccessful) this.toggleModal(false);
     },
     ...mapActions({
       register: ACTIONS.REGISTER,

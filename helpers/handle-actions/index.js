@@ -31,7 +31,6 @@ const showError = ({ app, normalizedError }) => {
   }
 };
 
-// TODO: adding logger
 const handleError = ({ app, error }) => {
   let normalizedError = error;
 
@@ -48,7 +47,6 @@ const handleError = ({ app, error }) => {
   console.log(error);
 };
 
-// TODO: adding loading
 export const handleAction = async ({ app, fn }) => {
   try {
     const res = await fn();

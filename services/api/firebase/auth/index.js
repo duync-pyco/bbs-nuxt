@@ -14,6 +14,12 @@ const generateBadRequestError = error => {
   else return new BBSError(ERRORS[errorKey]);
 };
 
+const handleError = error => {
+  const responseError = error.response.data.error;
+  if (responseError.code === 400) throw generateBadRequestError(responseError);
+  else throw responseError;
+};
+
 export const signup = async ({ email, password }) => {
   try {
     const { data } = await Axios.post(generateUrl('signupNewUser'), {
@@ -24,10 +30,7 @@ export const signup = async ({ email, password }) => {
 
     return data;
   } catch (error) {
-    const responseError = error.response.data.error;
-    if (responseError.code === 400)
-      throw generateBadRequestError(responseError);
-    else throw responseError;
+    handleError(error);
   }
 };
 
@@ -41,7 +44,7 @@ export const signIn = async ({ email, password }) => {
 
     return data;
   } catch (error) {
-    console.log(error);
+    handleError(error);
   }
 };
 

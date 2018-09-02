@@ -36,6 +36,6 @@ module.exports = {
   ],
   toast: {
     position: 'top-center',
-    duration: 3000
+    duration: 5000
   }
 };

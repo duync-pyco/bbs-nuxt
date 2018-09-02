@@ -28,7 +28,9 @@ import Modal from '~/elements/modal';
 export default {
   components: { Modal, Tabs, Tab, AuthForm },
   methods: {
-    handleLogin() {},
+    async handleLogin({ email, password }) {
+      await this.login({ email, password });
+    },
     async handleRegister({ email, password }) {
       await this.register({ email, password });
     },

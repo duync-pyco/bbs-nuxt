@@ -25,17 +25,6 @@ export default {
   mounted() {
     this.mounted = true;
   },
-  created() {
-    console.error(this.error);
-  },
-  watch: {
-    error(newErr) {
-      if (newErr) {
-        console.error(newErr);
-      }
-    }
-  },
-
   computed: {
     statusCode() {
       return (this.error && this.error.statusCode) || 500;

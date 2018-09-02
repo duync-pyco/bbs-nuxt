@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
-const baseUrl = process.env.BASE_URL;
-const generateUrl = path => `${baseUrl}/articles${path}.json`;
+const BASE_URL = process.env.BASE_URL;
+const generateUrl = path => `${BASE_URL}/articles${path}.json`;
 
 export const getAll = async () => {
   const { data } = await Axios.get(generateUrl(''));

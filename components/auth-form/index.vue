@@ -66,8 +66,8 @@ export default {
       this.submitted = true;
       await this.$validator.validateAll();
       if (!this.errors.any()) {
-        this.credentials = { ...emptyCredentials };
         this.$emit('submit', { ...this.credentials });
+        this.credentials = { ...emptyCredentials };
         this.submitted = false;
       }
     },

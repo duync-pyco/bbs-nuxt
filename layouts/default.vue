@@ -61,7 +61,7 @@ body {
   background-color: #fff;
   border: solid 1px #ddd;
   border-radius: 3px 3px 0 0;
-  margin-right: 0.5em;
+  margin-right: 2px;
   transform: translateY(2px);
   transition: transform 0.3s ease;
 }

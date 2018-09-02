@@ -1,8 +1,7 @@
 <template>
   <Modal>
     <div class="container">
-      <h3 class="title">Please login to continue.</h3>
-      <Tabs :options="{ useUrlFragment: false }" @changed="handleTabChange">
+      <Tabs :options="{ useUrlFragment: false }">
         <Tab id="auth/login" name="Login">
           <div class="form-container">
             <AuthForm :isLogin="true" @submit="handleLogin"/>
@@ -19,13 +18,25 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { Tabs, Tab } from 'vue-tabs-component';
 
+import { ACTIONS } from '~/store/modules/auth/constants';
 import AuthForm from '~/components/auth-form';
 import Modal from '~/elements/modal';
 
 export default {
-  components: { Modal, Tabs, Tab, AuthForm }
+  components: { Modal, Tabs, Tab, AuthForm },
+  methods: {
+    handleLogin() {},
+    async handleRegister({ email, password }) {
+      await this.register({ email, password });
+    },
+    ...mapActions({
+      register: ACTIONS.REGISTER,
+      login: ACTIONS.LOGIN
+    })
+  }
 };
 </script>
 

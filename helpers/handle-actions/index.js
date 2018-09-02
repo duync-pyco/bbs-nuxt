@@ -5,18 +5,40 @@ export class BBSError {
   }
 }
 
+const getUnknownError = () =>
+  new BBSError(500, 'Oops... Something went wrong! Please try again');
+
+const showError = ({ nuxtContext, error }) => {
+  if (process.client) {
+    switch (error.statusCode) {
+      case 404:
+        nuxtContext.error(error);
+        break;
+      default:
+        $nuxt.$toast.show(error.message);
+    }
+  } else {
+    nuxtContext.error(error);
+  }
+};
+
+// TODO: adding logger
+const handleError = ({ nuxtContext, error }) => {
+  showError({
+    nuxtContext,
+    error: !(error instanceof BBSError) ? getUnknownError() : error
+  });
+
+  console.log(error);
+};
+
+// TODO: adding loading
 export const handleAction = async (nuxtContext, fn) => {
   try {
     const res = await fn();
     return res;
   } catch (error) {
-    if (!(error instanceof BBSError)) {
-      nuxtContext.error(
-        new BBSError(500, 'Oops... Something went wrong! Please try again')
-      );
-    } else {
-      nuxtContext.error(error);
-    }
+    handleError({ nuxtContext, error });
   }
 };
 

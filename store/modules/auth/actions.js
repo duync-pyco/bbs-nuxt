@@ -7,7 +7,7 @@ export default {
   [ACTIONS.REGISTER](_, { email, password }) {
     const { store, $axios } = this.app;
 
-    handleAction({
+    return handleAction({
       app: this.app,
       fn: async () => {
         const { idToken, refreshToken, expiresIn } = await AuthApi.signup({
@@ -27,7 +27,7 @@ export default {
   [ACTIONS.LOGIN](_, { email, password }) {
     const { store, $axios } = this.app;
 
-    handleAction({
+    return handleAction({
       app: this.app,
       fn: async () => {
         const { idToken, refreshToken, expiresIn } = await AuthApi.signIn({

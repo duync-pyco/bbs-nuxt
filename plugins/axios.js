@@ -1,8 +1,12 @@
-import { MUTATIONS } from '~/store/modules/auth/constants';
+import { GETTERS, MUTATIONS } from '~/store/modules/auth/constants';
 
 export default function({ $axios, redirect, store }) {
   $axios.onRequest(config => {
-    // TODO: adds token to request
+    const { idToken } = store.getters[GETTERS.TOKENS];
+
+    if (!!idToken) {
+      config.url = `${config.url}?auth=${idToken}`;
+    }
   });
 
   $axios.onError(error => {

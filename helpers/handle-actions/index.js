@@ -5,10 +5,16 @@ export class BBSError {
   }
 }
 
-const getUnknownError = () =>
+const generateUnknownError = () =>
   new BBSError({
     statusCode: 500,
-    message: 'Oops... Something went wrong! Please try again'
+    message: 'Oops... Something went wrong! Please try again.'
+  });
+
+const generateUnauthorizedError = () =>
+  new BBSError({
+    statusCode: 401,
+    message: 'Please login to continue.'
   });
 
 const showError = ({ app, normalizedError }) => {
@@ -27,10 +33,17 @@ const showError = ({ app, normalizedError }) => {
 
 // TODO: adding logger
 const handleError = ({ app, error }) => {
-  showError({
-    app,
-    normalizedError: !(error instanceof BBSError) ? getUnknownError() : error
-  });
+  let normalizedError = error;
+
+  if (!(error instanceof BBSError)) {
+    if (error.response.status === 401) {
+      normalizedError = generateUnauthorizedError();
+    } else {
+      normalizedError = generateUnknownError();
+    }
+  }
+
+  showError({ app, normalizedError });
 
   console.log(error);
 };

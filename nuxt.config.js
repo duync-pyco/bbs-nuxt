@@ -28,7 +28,7 @@ module.exports = {
       });
     }
   },
-  plugins: ['~plugins/date-filter.js'],
+  plugins: ['~plugins/date-filter.js', '~plugins/axios.js'],
   modules: [
     ['@nuxtjs/dotenv', { filename: '.env' }],
     '@nuxtjs/toast',

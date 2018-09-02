@@ -49,8 +49,8 @@ export const remove = async ({ id, $axios }) => {
 
 export default {
   getAll,
-  getById,
   create,
+  getById,
   update,
   remove
 };

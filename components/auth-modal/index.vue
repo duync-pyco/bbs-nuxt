@@ -4,12 +4,12 @@
       <Tabs :options="{ useUrlFragment: false }">
         <Tab id="auth/login" name="Login">
           <div class="form-container">
-            <AuthForm :isLogin="true" @submit="handleLogin" @cancel="toggleModal(false)"/>
+            <AuthForm ref="loginForm" :isLogin="true" @submit="handleLogin" @cancel="toggleModal(false)"/>
           </div>
         </Tab>
         <Tab id="auth/register" name="Register">
           <div class="form-container">
-            <AuthForm :isLogin="false" @submit="handleRegister" @cancel="toggleModal(false)"/>
+            <AuthForm ref="registerForm" :isLogin="false" @submit="handleRegister" @cancel="toggleModal(false)"/>
           </div>
         </Tab>
       </Tabs>
@@ -30,9 +30,11 @@ export default {
   methods: {
     async handleLogin({ email, password }) {
       await this.login({ email, password });
+      // this.$refs.loginForm.clearForm();
     },
     async handleRegister({ email, password }) {
       await this.register({ email, password });
+      // this.$refs.registerForm.clearForm();
     },
     ...mapActions({
       register: ACTIONS.REGISTER,

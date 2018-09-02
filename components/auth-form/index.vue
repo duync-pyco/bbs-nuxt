@@ -5,7 +5,7 @@
       placeholder="email"
       v-model="credentials.email"
       v-validate="'required|email'"
-      @keyup="handleTextChange"
+      @keydown="handleTextChange"
     />
     <input
       type="password"
@@ -14,7 +14,7 @@
       v-model="credentials.password"
       v-validate="'required'"
       ref="password"
-      @keyup="handleTextChange"
+      @keydown="handleTextChange"
     />
     <input
       v-if="!isLogin"
@@ -23,7 +23,7 @@
       placeholder="confirm password"
       v-model="credentials.passwordConfirmation"
       v-validate="'required|confirmed:password'"
-      @keyup="handleTextChange"
+      @keydown="handleTextChange"
     />
     <div class="error-container" v-show="errors.any() && this.submitted">
       <span v-if="errors.has('email')">{{ errors.first('email') }}</span>
@@ -67,7 +67,6 @@ export default {
       await this.$validator.validateAll();
       if (!this.errors.any()) {
         this.$emit('submit', { ...this.credentials });
-        this.credentials = { ...emptyCredentials };
         this.submitted = false;
       }
     },
@@ -76,6 +75,9 @@ export default {
     },
     handleCancelClick(e) {
       this.$emit('cancel');
+    },
+    clearForm() {
+      this.credentials = { ...emptyCredentials };
     }
   }
 };

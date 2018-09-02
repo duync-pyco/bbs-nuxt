@@ -1,5 +1,6 @@
 <template>
   <div>
+    <AuthModal v-show="showModal"/>
     <NavigationBar />
     <hr />
     <div id="app-container">
@@ -9,10 +10,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import NavigationBar from '~/components/navigation-bar';
+import AuthModal from '~/components/auth-modal';
+import { GETTERS } from '~/store/modules/auth/constants';
 
 export default {
-  components: { NavigationBar }
+  components: { NavigationBar, AuthModal },
+  computed: {
+    ...mapGetters({
+      showModal: GETTERS.SHOW_MODAL
+    })
+  }
 };
 </script>
 

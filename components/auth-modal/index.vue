@@ -4,12 +4,12 @@
       <Tabs :options="{ useUrlFragment: false }">
         <Tab id="auth/login" name="Login">
           <div class="form-container">
-            <AuthForm :isLogin="true" @submit="handleLogin"/>
+            <AuthForm :isLogin="true" @submit="handleLogin" @cancel="toggleModal(false)"/>
           </div>
         </Tab>
         <Tab id="auth/register" name="Register">
           <div class="form-container">
-            <AuthForm :isLogin="false" @submit="handleRegister"/>
+            <AuthForm :isLogin="false" @submit="handleRegister" @cancel="toggleModal(false)"/>
           </div>
         </Tab>
       </Tabs>
@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapMutations, mapActions } from 'vuex';
 import { Tabs, Tab } from 'vue-tabs-component';
 
-import { ACTIONS } from '~/store/modules/auth/constants';
+import { MUTATIONS, ACTIONS } from '~/store/modules/auth/constants';
 import AuthForm from '~/components/auth-form';
 import Modal from '~/elements/modal';
 
@@ -37,6 +37,9 @@ export default {
     ...mapActions({
       register: ACTIONS.REGISTER,
       login: ACTIONS.LOGIN
+    }),
+    ...mapMutations({
+      toggleModal: MUTATIONS.TOGGLE_MODAL
     })
   }
 };

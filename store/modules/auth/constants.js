@@ -11,7 +11,8 @@ export const MUTATIONS = {
 
 export const ACTIONS = {
   REGISTER: 'AUTH/REGISTER',
-  LOGIN: 'AUTH/LOGIN'
+  LOGIN: 'AUTH/LOGIN',
+  SAVE_TOKENS: 'AUTH/SAVE_TOKENS'
 };
 
 export default {

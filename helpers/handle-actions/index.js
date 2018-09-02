@@ -36,7 +36,7 @@ const handleError = ({ app, error }) => {
   let normalizedError = error;
 
   if (!(error instanceof BBSError)) {
-    if (error.response.status === 401) {
+    if (error && error.response && error.response.status === 401) {
       normalizedError = generateUnauthorizedError();
     } else {
       normalizedError = generateUnknownError();

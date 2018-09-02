@@ -21,6 +21,7 @@ import Button from '~/elements/button';
 
 export default {
   components: { ArticleItem, Button },
+  middleware: ['auth'],
   async asyncData(nuxtContext) {
     const { store, params } = nuxtContext;
     const article = await store.dispatch(ACTIONS.GET_BY_ID, {

@@ -14,6 +14,7 @@ import ArticleForm from '~/components/article-form';
 
 export default {
   components: { ArticleForm },
+  middleware: ['auth'],
   async asyncData(nuxtContext) {
     const { store, params } = nuxtContext;
     const article = await store.dispatch(ACTIONS.GET_BY_ID, {

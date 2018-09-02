@@ -4,7 +4,10 @@ const showModal = state => state.showModal;
 
 const tokens = state => state.tokens;
 
+const isAuthenticated = state => !!state.tokens.idToken;
+
 export default {
   [GETTERS.SHOW_MODAL]: showModal,
-  [GETTERS.TOKENS]: tokens
+  [GETTERS.TOKENS]: tokens,
+  [GETTERS.IS_AUTHENTICATED]: isAuthenticated
 };

@@ -10,6 +10,7 @@ import ArticleForm from '~/components/article-form';
 
 export default {
   components: { ArticleForm },
+  middleware: ['auth'],
   methods: {
     async handleSubmit(article) {
       const isSuccessful = await this.addNewArticle({ article });

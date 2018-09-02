@@ -12,8 +12,8 @@ export default {
   components: { ArticleForm },
   methods: {
     async handleSubmit(article) {
-      await this.addNewArticle({ article });
-      this.$router.push('/articles');
+      const isSuccessful = await this.addNewArticle({ article });
+      if (isSuccessful) this.$router.push('/articles');
     },
     ...mapActions({
       addNewArticle: ACTIONS.ADD

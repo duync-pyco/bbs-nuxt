@@ -1,12 +1,15 @@
 export class BBSError {
-  constructor(statusCode, message) {
+  constructor({ statusCode, message }) {
     this.statusCode = statusCode;
     this.message = message;
   }
 }
 
 const getUnknownError = () =>
-  new BBSError(500, 'Oops... Something went wrong! Please try again');
+  new BBSError({
+    statusCode: 500,
+    message: 'Oops... Something went wrong! Please try again'
+  });
 
 const showError = ({ nuxtContext, error }) => {
   if (process.client) {

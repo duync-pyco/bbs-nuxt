@@ -12,7 +12,11 @@ const getAll = async ({ commit }, { nuxtContext }) =>
 const getById = async (_, { id, nuxtContext }) =>
   handleAction(nuxtContext, async () => {
     const article = await ArticleApi.getById(id);
-    if (!article) throw new BBSError(404, 'Item not found');
+    if (!article)
+      throw new BBSError({
+        statusCode: 404,
+        message: 'Item not found'
+      });
     return article;
   });
 

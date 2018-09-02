@@ -2,10 +2,10 @@ import Axios from 'axios';
 import { BBSError } from '~/helpers/handle-actions';
 import { ERRORS } from './constants';
 
-const BASE_URL = process.env.FIREBASE_BASE_URL;
-const FIREBASE_APIKEY = process.env.FIREBASE_APIKEY;
+const BASE_URL = process.env.AUTH_BASE_URL;
+const APIKEY = process.env.AUTH_APIKEY;
 const generateUrl = (path, query) =>
-  `${BASE_URL}/${path}?key=${FIREBASE_APIKEY}&${query || ''}`;
+  `${BASE_URL}/${path}?key=${APIKEY}&${query || ''}`;
 
 const generateBadRequestError = error => {
   const errorKey = Object.keys(ERRORS).find(key => error.message.includes(key));

@@ -3,7 +3,7 @@ import mutations from './mutations';
 import getters from './getters';
 
 const state = () => ({
-  showModal: false
+  showModal: true
 });
 
 export default {

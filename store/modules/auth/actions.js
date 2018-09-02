@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import AuthApi from '~/services/api/firebase/auth';
+import AuthApi from '~/services/api/auth';
 import { handleAction } from '~/helpers/handle-actions/';
 import { ACTIONS } from './constants';
 

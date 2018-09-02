@@ -14,6 +14,7 @@ export default function({ $axios, redirect, store }) {
     if (code === 401) {
       redirect('/articles');
       store.commit(MUTATIONS.TOGGLE_MODAL, true);
+      store.commit(MUTATIONS.SET_TOKENS, {});
     }
   });
 }

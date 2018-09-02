@@ -1,4 +1,3 @@
-import Axios from 'axios';
 import { BBSError } from '~/helpers/handle-actions';
 import { ERRORS } from './constants';
 
@@ -20,9 +19,9 @@ const handleError = error => {
   else throw responseError;
 };
 
-export const signup = async ({ email, password }) => {
+export const signup = async ({ email, password, $axios }) => {
   try {
-    const { data } = await Axios.post(generateUrl('signupNewUser'), {
+    const { data } = await $axios.post(generateUrl('signupNewUser'), {
       email,
       password,
       returnSecureToken: true
@@ -34,9 +33,9 @@ export const signup = async ({ email, password }) => {
   }
 };
 
-export const signIn = async ({ email, password }) => {
+export const signIn = async ({ email, password, $axios }) => {
   try {
-    const { data } = await Axios.post(generateUrl('verifyPassword'), {
+    const { data } = await $axios.post(generateUrl('verifyPassword'), {
       email,
       password,
       returnSecureToken: true

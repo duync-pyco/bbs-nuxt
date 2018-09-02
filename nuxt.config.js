@@ -32,7 +32,8 @@ module.exports = {
   modules: [
     ['@nuxtjs/dotenv', { filename: '.env' }],
     '@nuxtjs/toast',
-    'nuxt-validate'
+    'nuxt-validate',
+    '@nuxtjs/axios'
   ],
   toast: {
     position: 'top-center',

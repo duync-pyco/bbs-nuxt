@@ -11,37 +11,37 @@ const getUnknownError = () =>
     message: 'Oops... Something went wrong! Please try again'
   });
 
-const showError = ({ nuxtContext, error }) => {
+const showError = ({ app, normalizedError }) => {
   if (process.client) {
-    switch (error.statusCode) {
+    switch (normalizedError.statusCode) {
       case 404:
-        nuxtContext.error(error);
+        app.context.error(normalizedError);
         break;
       default:
-        $nuxt.$toast.show(error.message);
+        app.$toast.show(normalizedError.message);
     }
   } else {
-    nuxtContext.error(error);
+    app.context.error(normalizedError);
   }
 };
 
 // TODO: adding logger
-const handleError = ({ nuxtContext, error }) => {
+const handleError = ({ app, error }) => {
   showError({
-    nuxtContext,
-    error: !(error instanceof BBSError) ? getUnknownError() : error
+    app,
+    normalizedError: !(error instanceof BBSError) ? getUnknownError() : error
   });
 
   console.log(error);
 };
 
 // TODO: adding loading
-export const handleAction = async (nuxtContext, fn) => {
+export const handleAction = async ({ app, fn }) => {
   try {
     const res = await fn();
     return res;
   } catch (error) {
-    handleError({ nuxtContext, error });
+    handleError({ app, error });
   }
 };
 

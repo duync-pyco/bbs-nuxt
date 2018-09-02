@@ -1,10 +1,8 @@
-import Axios from 'axios';
-
 const BASE_URL = process.env.BASE_URL;
 const generateUrl = path => `${BASE_URL}/articles${path}.json`;
 
-export const getAll = async () => {
-  const { data } = await Axios.get(generateUrl(''));
+export const getAll = async ({ $axios }) => {
+  const { data } = await $axios.get(generateUrl(''));
 
   if (data)
     return Object.keys(data).map(key => ({
@@ -14,22 +12,22 @@ export const getAll = async () => {
   else return [];
 };
 
-export const create = async article => {
+export const create = async ({ article, $axios }) => {
   const newArticle = {
     ...article,
     updatedAt: new Date().toISOString(),
     views: 0
   };
 
-  const res = await Axios.post(generateUrl(''), newArticle);
+  const res = await $axios.post(generateUrl(''), newArticle);
   return {
     ...newArticle,
     id: res.data.name
   };
 };
 
-export const getById = async id => {
-  const res = await Axios.get(generateUrl(`/${id}`));
+export const getById = async ({ id, $axios }) => {
+  const res = await $axios.get(generateUrl(`/${id}`));
 
   if (!res.data) return null;
 
@@ -39,13 +37,13 @@ export const getById = async id => {
   };
 };
 
-export const update = async article => {
-  const res = await Axios.put(generateUrl(`/${article.id}`), article);
+export const update = async ({ article, $axios }) => {
+  const res = await $axios.put(generateUrl(`/${article.id}`), article);
   return res.data;
 };
 
-export const remove = async id => {
-  const res = await Axios.delete(generateUrl(`/${id}`));
+export const remove = async ({ id, $axios }) => {
+  const res = await $axios.delete(generateUrl(`/${id}`));
   return res.data;
 };
 
